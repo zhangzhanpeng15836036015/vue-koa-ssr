@@ -45,14 +45,14 @@ const handleSSR = async ctx => {
   const clientMainfestResp = await axios.get(
     "http://127.0.0.1:8001/vue-ssr-client-manifest.json"
   );
-  const clientMainfest = clientMainfestResp.data;
+  const clientManifest = clientMainfestResp.data;
   const template = fs.readFileSync(
     path.join(__dirname, "../server-template.ejs"),
     "utf-8"
   );
   const renderer = VueserverRenderer.createBundleRenderer(bundle, {
     inject: false,
-    clientMainfest
+    clientManifest
   });
 
   // console.log(renderer, 112);
